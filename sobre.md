@@ -17,14 +17,12 @@ Ao final de todas as aulas é esperado que o aluno adquira o conhecimento necess
 
 Este minicurso é minstrado pelos petianos:
 
-- Adriel Costa
-- Alexandre Ribeiro
-- André Gomes
-- Artur Revorêdo
-- Danillo Fonseca
-- José Ivo Schwade
-- Olive Medeiros
-- Pedro Lucas de Souza
+- fulano
+- fulano
+- fulano
+- fulano
+- fulano
+- fulano
 
 ## Referências
 

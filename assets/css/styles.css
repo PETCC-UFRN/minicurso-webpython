@@ -14,12 +14,16 @@
     100%{opacity:1;top:0px;}
 }
 
-/*
+/* DEPRECATED
 palheta de cores:
 #1B1F23  //preto azulado
 #FEFCFD  //branco
 #6DB33F  //verde
-*/
+ */
+
+ /* versão fastapi
+ #009485 //verde fastapi
+ */
 
 .highlight pre {
     overflow-x: auto; /* Cria o scroll se o texto for maior que a largura */
@@ -35,7 +39,7 @@ main{
 
 a{
   text-decoration:none;
-  color:#6DB33F;
+  color:#009485;
 }
 
 a:hover{
@@ -158,7 +162,7 @@ ul{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #6DB33F;
+    background-color: #009485;
     height: 4vh;
     position: fixed;
     top: 0;
@@ -198,7 +202,7 @@ ul{
 }
 
 .dias_e_temas a {
-  color: #6DB33F; 
+  color: #009485; 
 }
 
 .dias_e_temas a:hover {
@@ -255,13 +259,16 @@ ul{
     /*background: #020728;*/
     /*background: #5D5D81;*/
     /*background: rgba(93, 93, 129, 0.5);*/
-    background: rgba(109, 179, 63, 0.5);
+    background: rgba(0, 148, 133, 0.5);
 
     
     color: #f0f4ff;
     /*border-right: 1px solid #893172;*/
 }
 
+.sumario-git a {
+    color: #f0f4ff;
+}
 
 .toggle-button{
     font-family: "Source Code Pro", "Menlo", "DejaVu Sans Mono", "Lucida Console", monospace;

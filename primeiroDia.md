@@ -57,23 +57,21 @@ title: Minicurso de Spring
 
 # Resumo do primeiro dia
 
-Bem vindo ao minicurso **Introdução ao desenvolvimento back-end com Spring!**
+Bem vindo ao minicurso **Introdução ao desenvolvimento back-end com Python!**
 
-Esta é a primeira aula do nosso curso, portanto, será uma aula mais introdutória. Começaremos com uma revisão rápida de Java, pois é a linguagem base do framework, além de conceitos básicos de Programação Orientada a Objetos (POO). Logo após, vamos falar um pouco sobre o **Ecossistema Spring** e as diferentes aplicações das suas ferramentas, além de explicar como o Spring Framework funciona e, o mais importante: "Porque Spring Framework?". Por fim, encerraremos a aula com um exercício onde você irá iniciar o seu primeiro projeto Spring utilizando a ferramenta Spring Initializr, além de alguns extras. Boa aula!
-
-Todavia, antes de começarmos, é importante sanar ainda algumas dúvidas para aqueles que estão se iniciando agora no mundo do desenvolvimento web, em especial no que tange a onde o Spring se encaixa nesse ecossitema.
+Esta é a primeira aula do nosso curso. Portanto, será uma aula mais introdutória. Começaremos com uma introdução à Web e a APIs seguida pela preparação do ambiente virtual de Python. Logo após, vamos acompanhar o passo a passo para se criar o primeiro servidor e rodar uma aplicação na Web, bem como gerar e compreender a documentação sobre ela. Por fim, encerraremos a aula com um exercício no qual vocês construirão uma calculadora API utilizando parâmetros de rota. Boa aula!
 
 # O Básico de desenvolvimento web
 
-Quando acessamos um site ou um aplicativo, estamos interagindo com um sistema que, na maioria das vezes, é dividido em duas partes principais, que se comunicam entre si, quais sejam o Front (à frente) e o Back (atrás).
+Quando acessamos um site ou um aplicativo, estamos interagindo com um sistema que, na maioria das vezes, é dividido em duas partes principais que se comunicam entre si: o Front (à frente) e o Back (atrás).
 
 ## Front-End (O lado do Cliente)
 
-É a interface gráfica, tudo aquilo que o usuário vê, clica e interage. Telas, botões, formulários, animações e o design da página. Geralmente é construído com HTML, CSS e JavaScript (junto com ferramentas como React, Angular ou Vue).
+É a interface gráfica: tudo aquilo que o usuário vê, clica e interage; telas, botões, formulários, animações e o design da página. Geralmente, é construído com HTML, CSS e JavaScript (junto a ferramentas como React, Angular ou Vue).
 
 ## Back-End (O lado do Servidor)
 
-É o responsável por processar as regras de negócio, buscar ou salvar informações no banco de dados, garantir a segurança, autenticar usuários e devolver a informação processada para o Front-End exibir. É exatamente no Back-End que o Java e o Spring atuam!
+É o responsável por processar as regras de negócio, buscar ou salvar informações no banco de dados, garantir a segurança, autenticar usuários e devolver a informação processada para o Front-End exibir. É exatamente no Back-End que o Python atua!
 
 ## O que é um Framework?
 
@@ -86,456 +84,30 @@ Um Framework é um conjunto de códigos, bibliotecas e padrões de arquitetura p
 - Segurança e Estabilidade: Frameworks de mercado são utilizados e testado.
 - Foco no Conteúdo: m vez de gastar dias configurando servidores e conexões, você pode gastar seu tempo programando funcionalidades da sua aplicação.
 
-# Revisando Java
+O framework em Python com o qual trabalharemos ao longo deste minicurso se chama _fastapi_.
 
-Antes de começarmos a estudar Spring é mais do que necessário darmos uma revisada na linguagem na qual o Spring se baseia, o Java!
+## API RESTful
 
-<div style="text-align: center;"> <img alt="Meme muito engraçado sobre arquivos do sistema" src="assets/images/java.png" width="40%">
-</div>
+### O que é uma API?
+Uma interface de programação de aplicação (API) age como um intermediador entre o cliente (Front) e o servidor (Back), facilitando a sua comunicação e a troca de dados.
 
-### Classes e Objetos
+### REST
 
-Em Java, classes são moldes que definem a estrutura e o comportamento de objetos que sejam criados a partir dos mesmos. Por outro lado, objetos são instâncias das classes e se comportam conforme as regrinhas que foram estabelecidas em sua classe. Um exêmplo famoso que ajuda a lembrar bem desses dois conceitos é o da forma e do bolo: a forma é a classe que molda o bolo, o bolo é o objeto moldado pela forma.
+A Transferência Representacional de Estado (REST) nada mais é do que uma arquitetura que impõe condições sobre como uma API deve se comportar. É chamada de RESTful uma API que segue as diretrizes REST:
 
-As classes também possuem **métodos**, que consistem em funções que podem ser chamadas por qualquer instância daquela classe.
+- **Cliente envia requisição para a API:** O cliente faz uma requisição à API com informações como o método HTTP, parâmetros, etc.;
+- **API processa o pedido:** A API valida a requisição e determina a operação lógica necessária de acordo com as informações fornecidas;
+- **API se comunica com o Backend:** A API interage com a lógica, o banco de dados ou outros serviços da aplicação para processar a requisição e obter os dados de retorno;
+- **API envia resposta ao cliente:** A API retorna o resultado ao cliente, normalmente com um código de status HTTP e os dados de resposta em um formato como JSON ou XML.
 
-```java
-public class FormaQuadrada{ //a forma do bolo
-    float profundidade = 6;
-    float altura = 20;
-    float largura = 20;
+Em breve, tocaremos nos tópicos dos códigos de status HTTP e no formato JSON. Aguenta aí!
 
-    public float calcularVolume(){
-      return this.profundidade * this.altura * this.largura;
-  }
-}
-```
+Os quatro **métodos principais** que indicam requisições de um cliente a uma uma API RESTful, que originam do HTTP, são:
 
-```java
-public class Main {
-    public static void main(String[] args) {
-        FormaQuadrada bolo = new FormaQuadrada;
-        //bolo é a instância da nossa classe, ou seja, o objeto
-        volumeBolo = bolo.calcularVolume()
-        System.out.println(volumeBolo) // o valor printado será 20 * 20 * 6 = 2400
-    }
-}
+- **GET:** Acessar um recurso do servidor;
+- **POST:** Enviar um recurso ao servidor;
+- **PUT:** Atualizar um recurso existente no servidor;
+- **DELETE:** Remover um recurso do servidor.
 
-```
-
-### **Exercício 1:**
-
-Para ajudar a relembrar, ou ter certeza que já conhecemos classes, crie uma classe "User" em Java com atributos e métodos à sua escolha e instancie essa classe na classe Main. Sua classe pode ser oganizada da maneira que quiser, mas coloque um atributo booleano "ativo".
-
-### Encapsulamento
-
-Encapsular é o ato de agrupar dados (atributos) e comportamentos (métodos) dentro de uma classe, e restringir o acesso direto aos componentes internos de um objeto. Isso permite que os atributos de uma classe só possam ser acessados ou alterados em situações específicas.
-
-Imagine a classe contaBancaria:
-
-```java
-public class contaBancaria {
-    double dinheiroEmConta;
-    String senhaDoCliente;
-}
-```
-
-Qualquer parte do código que tentar acessar o atributo senhaDoCliente de uma instância dessa classe, vai conseguir!
-
-E da mesma maneira, qualquer parte do nosso código conseguiria adicionar e remover dinheiro sem nenhum tipo de checagem ou aviso.
-
-Podemos, então, usar os conceitos de encapsulamento para proibir que esses atributos sejam acessados de qualquer maneira pelo resto do código:
-
-```java
-public class contaBancaria {
-    private double dinheiroEmConta;
-    private String senhaDoCliente;
-}
-```
-
-Agora, apenas métodos da própria classe podem checar ou alterar esses valores!
-
-Aqui vai uma tabelinha que mostra quais permissões de acesso são concedidas para cada modificador de acesso:
-
-<div style="text-align: center;"> <img alt="Meme muito engraçado sobre arquivos do sistema" src="assets/images/access-modifiers.png" width="60%">
-</div>
-
-### **Exercício 2:**
-
-Agora que finalmente revimos o conceito de encapsulamento, volte nas classes "User" que você programou mais cedo e reveja se esses conceitos foram seguidos de maneira satisfatória!
-
-#### Herança
-
-<div style="text-align: center;"> <img alt="Meme muito engraçado sobre arquivos do sistema" src="assets/images/java-study.png" width="40%">
-</div>
-
-Uma classe pode herdar todos os atributos e métodos de uma outra classe. Esse conceito é conhecido como herança, vamos ver um exemplo:
-
-```java
-public class FormaRedonda{ //a forma do bolo
-    float profundidade = 6;
-    float raio = 15;
-
-    public float calcularVolume(){
-      return 3.14 * (raio * raio) * profundidade;
-
-  }
-}
-
-public class FormaRedondaComFuroNoMeio extends FormaRedonda {
-    float profundidade = 6; 
-    float raio = 15;
-    float raioDoFuro = 4;
-    
-    // aqui estamos sobreescrevendo o método "calcularVolume"
-    // para manter a corretude na forma com um furo no meio.
-    public float calcularVolume (){
-      volumeTotal = 3.14 * (raio * raio) * profundidade;
-      volumeFuro = 3.14 * (raioDoFuro * raioDoFuro) * profundidade;
-      return volumeTotal - volumeFuro;
-  }
-}
-```
-
-### **Exercício 3:**
-
-Agora que relembramos o conceito de Herança, crie a classe "Admin" a partir da classe usuário. Objetos instanciados dessa classe devem poder chamar um método que desativa um usuário (muda o valor do atributo "Ativo" do usuário alvo para *false*).
-
-#### Interfaces
-
-Em Java podemos criar classes que servem como "molde" para outras classes, dizendo o que devem implementar:
-
-```java
-public interface PagamentoService {
-    void processarPagamento(double valor);
-}
-
-public class CartaoCreditoService implements PagamentoService {
-    @Override
-    public void processarPagamento(double valor) {
-        // Lógica específica
-    }
-}
-```
-
-### **Exercício 4:**
-
-A partir da interface abaixo, implemente uma classe "AdminService" que atenda todos os requisitos de "GenericUserService".
-
-```java
-public interface GenericUserService {
-    void verificarUserStatus(User usuario); 
-    void reativarUser(User usuario);
-}
-
-```
-
-### Organizando Código em Java
-
-#### Pacotes
-
-É a principal maneira de se organizar código em Java, como se fosse em pastas. Eles evitam conflitos de nomes entre classes e refletem a modularização do sistema (ex.: com.exemplo.demo.controller).
-
-#### Group Id
-
-O Group Id identifica a organização do projeto, é similar ao domínio de uma empresa, mas ao contrário (ex.: com.exemplo).
-
-#### Artifact Id
-
-É o nome do projeto/aplicação e geralmente vira o nome do arquivo .jar (ex.: api-clientes).
-
-#### Version
-
-De maneira bem simples, version é a versão identificadora do artefato publicado.
-
-## Introduzindo o Spring
-
-<div style="text-align: center;"> <img alt="Meme muito engraçado sobre arquivos do sistema" src="assets/images/spring-logo.png" width="40%">
-</div>
-
-Spring é um framework Java para criação de aplicações modernas, robustas e escaláveis. Ele facilita o desenvolvimento, fornecendo funcionalidades prontas para serem implementadas no projeto, dentre elas:
-
-- Injeção de dependências (IoC)
-- Controle de ciclo de vida dos objetos
-- Acesso simplificado a banco de dados
-- Integração com APIs, segurança, web, mensagens etc.
-
-O principal objetivo do Spring é, então, ajudar o densenvolvedor a construir aplicações rapidamente e com código menos repetivivo.
-
-## Ecossistema Spring
-
-<div style="text-align: center;"> <img alt="Meme muito engraçado sobre arquivos do sistema" src="assets/images/green-spring.png" width="60%">
-</div>
-
-O ecossistema Spring é um conjunto de mais de 20 ferramentas, módulos e projetos que trabalham juntos, de maneira em que cada projeto resolve um problema específico. Sendo assim, dentro de uma aplicação podemos utilizar diferentes ferramentas. Considere portanto o contexto de uma aplicação de pedidos de comida para *delivery*:
-
-- Spring Boot — Facilita iniciar aplicações rapidamente.
-  - É uma versão opinativa do Spring Framework, isto é, com depedências já pré-instaladas e outras configurações já estabelecidas para tornar a inicialização de um projeto mais rápida e produtiva. No contexto da aplicação tem tanto um forte impacto no desenvolvimento quanto um impacto na velocidade de incialização, por exemplo.
-- Spring Data — Abstração para acesso a dados
-  - Traz interfaces que podem ser utiilzadas para implementar muito rapidamente os métodos de acesso ao banco de dados da aplicação. No contexto da aplicação, o Spring Data seria utilizado para "puxar" do banco de dados (via *Queries*) coisas como nomes de restaurantes, avaliações, itens do cardápio de cada restaurante, etc.
-- Spring Security — autenticação, autorização, criptografia.
-  - Seria utilizado para a criação de usuários para clientes e criação de restaurantes no contexto da aplicação, tudo de forma robusta e evitando problemas como vazamentos de dados, etc.
-- Spring AI — recursos para integrar modelos de IA (LLMs).
-  - Poderia ser usado para a integração de um chatbot com a API da OpenAI que orientasse o usuário a como utilizar a aplicação.
-- Spring Cloud — soluções para microsserviços.
-  - Poderia ser utilizado para integração da aplicação com outros serviços já existentes como o iFood, por exemplo.
-- Spring Batch — processamento em lote.
-  - Otimização da aplicação.
-- Spring Web / WebFlux — APIs REST.
-  - Estabelece o meio de comunicação entre Back-End, Front-End e Banco de dados.
-- Spring HATEOAS, Spring Integration, Spring AMQP, entre muitos outros.
-
-Nosso foco nesse minicurso será direcionado principalmente ao Spring Boot e Spring Web.
-
-## Entendendo Dependências
-
-Podemos entender como dependências as classes e objetos que um componente do projeto precisa para funcionar.
-
-Elas podem ser úteis quando instanciar objetos manualmente pode ser custoso ou confuso, ou então quando temos configurações que precisam ser reaproveitadas. Por exemplo:
-
-- Conexões de banco
-- Serviços com lógica complexa
-<!--aumentar o número de exemplos-->
-
-Sem injeção de dependências nesses casos, teriamos que criar tudo na mão, gerenciar ciclo de vida, conexões, configurações...
-
-Já com injeções nossa vida fica mais fácil, o Spring controla a criaçãoo, destruição e fornecimento dos objetos, deixando o fluxo de trabalho mais fluido e organizado. Imagina ter que reiniciar manualmente a conexão de banco de dados toda vez que um serviço é criado!
-
-### Spring como Injetor de Dependências
-
-<div style="text-align: center;"> <img alt="Meme muito engraçado sobre arquivos do sistema" src="assets/images/possum-coffee.png" width="40%">
-</div>
-
-#### ApplicationContext
-
-É o contêiner principal do Spring, responsável por criar objetos, armazená-los, gerenciar seu ciclo de vida e injetar dependências onde for preciso.
-
-#### Bean
-
-São os objetos controlados pelo Spring. É o componente gerenciado pelo ApplicationContext. Exemplos comuns de beans são:
-
-- Services
-- Controllers
-- Repositories
-- Configurações
-
-#### Annotations
-
-São as instrução para o Spring, que dizem o que criar, quando criar, onde injetar e como configurar tudo. Como exemplos, temos:
-
-- @Component. *Utilidade: indica que a classe é gerida automaticamente pelo Spring*
-- @Service. *Utilidade: indica que a classe implementa lógicas de negócio*
-- @Repository. *Utilidade: abstrai o acesso ao banco de dados*
-- @Autowired. *Utilidade: injeta as dependências automaticamente*
-- @Configuration. *Utilidade: demarca que a classe define e configura os beans*
-- @Bean. *Utilidade: Declara que um método produz um bean gerenciado pelo Spring*
-
-#### Applicationproperties ou yml
-
-O Application.properties serve como o arquivo central de configuração do Spring Boot, definindo compotamentos da aplicação sem alterar o código.
-
-Exemplo do .properties:
-
-```java
-server.port=8081
-spring.datasource.url=jdbc:h2:mem:testdb
-spring.jpa.show-sql=true
-```
-
-Exemplo do .yml:
-
-```yml
-server:
-  port: 8081
-spring:
-  datasource:
-    url: jdbc:h2:mem:testdb
-  jpa:
-    show-sql: true
-```
-
-## POO no Spring
-
-  No início dessa aula tivemos uma revisão básica de Java e de Programação Orientada a Objetos (POO). Sendo assim, agora vamos entender como podemos aplicar esses conceitos no desenvolvimento da nossa aplicação.
-
-### Camadas de um projeto Spring
-
-  Um projeto Spring geralmente é dividido em quatro camadas:
-
-- Model (ou Entity) - Objetos/Entidades do nosso site;
-- Controller - Camada onde desenvolveremos nossa API;
-- Service - Lógica de Negócio ;
-- Repository - Comunicação direta com o Banco de Dados;
-
-<div style="text-align: center;"> <img alt="Meme muito engraçado sobre arquivos do sistema" src="assets/images/springlayers.png" width="60%"> </div>
-
-***OBS.: Como o foco desse curso é apenas desenvolvimento Web, as soluções relacionadas à camada Repository serão sempre disponibilizadas previamente***
-
-  Ao longo desse curso vamos focar no desenvolvimento das camadas Model, Controller e Service e, na aula de hoje, vamos nos aprofundar na camada Model.
-
-  Aqui está a estrutura resumida de um projeto Spring:
-
-  ```terminal
-
-  ProjetoSpring/
-  ├── diferentes arquivos de configuração, arquivos de documentação, etc.
-  └── src
-    ├── controller
-    │   └── EntidadeController.java
-    ├── model
-    │   └── Entidade.java
-    ├── repository
-    │   └── EntidadeRepository.java
-    └── service
-        └── EntidadeService.java
-  ```
-
-Vamos ver essa estrutura em prática no final dessa aula.
-
-### A camada Model
-
-  Voltemos um pouco ao exemplo da aplicação de delivery: para a implementação de uma operação como "Fazer Pedido", precisamos implementar uma série de classes como a classe Usuário, a classe Cliente que herda de Usuário, a classe Restaurante, além de diversas outras classes que serão utilizadas no processamento do pagamento, uma classe para armazenar o pedido, etc.
-
-  Todas essas classes são chamadas, no contexto do projeto, de *entidades*, e é na camada Model que elas residem. Sendo assim, esta camada é a que mais se assemelha com a programação de qualquer outro projeto em Java.
-
-  Se você já estudou Banco de Dados alguma vez então você provavelmente está achando o nome "entidade" muito familiar, e você está no caminho certo! Todas as classes que são implementadas na camada model possuem ligação direta com as entidades do Banco de Dados da aplicação, e essa ligação é feita a partir de *Annotations*. Aqui está um exemplo de implementação de uma classe User na camada Model:
-
-```java
-@Entity
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    @Column(name="nome", columnDefinition = "VARCHAR(255)")
-    private String name;
-
-    @Column(name="email", columnDefinition = "VARCHAR(255)")
-    private String email;
-
-    @ManyToOne
-    @JoinColumn(name = "user_type_id")
-    @JsonProperty("user_type")
-    private User_Type user_type;
-}
-```
-
-  Não se preocupe e entender agora cada uma dessas *Annotations*, apenas perceba que, antes da classe utilizamos `@Entity` para indicar ao compilador que aquela classe representa uma entidade do Banco de Dados, bem como antes de cada atributo utilizamos `@Column` para indicar que aquele atributo representa uma coluna específica da entidade (tabela). A partir dessas *Annotations* as classes do sistema e as entidades do banco se tornam 100% ligadas umas as outras.
-
-## Spring Initialzr
-
-<div style="text-align: center;"> <img alt="Meme muito engraçado sobre arquivos do sistema" src="assets/images/spring-initilzr.png" width="100%">
-</div>
-
-## Gerenciadores de Projeto
-
-Gerenciadores de projeto tem como função principal resolver dependências automaticamente, controlar o ciclo de build (compilar, testar, empacotar e rodar) e padronizar o projeto para qualquer desenvolvedor.
-
-### Maven
-
-<div style="text-align: center;"> <img alt="Meme muito engraçado sobre arquivos do sistema" src="assets/images/maven-logo.png" width="60%">
-</div>
-
-- XML-based (usa pom.xml)
-- Padronizado e opinativo
-- Gerencia dependencias, ciclo de build, plugins e empacotamento
-- Grande quantidade de bibliotecas disponível
-
-### Gradle
-
-<div style="text-align: center;"> <img alt="Meme muito engraçado sobre arquivos do sistema" src="assets/images/Gradle-logo.png" width="60%">
-</div>
-
-- DSL baseada em Groovy/Kotlin
-- Mais rápido
-- Flexível e altamente configurável
-- Muito usado em projetos modernos (Spring, Android)
-
-## Criando um Projeto Pela Primeira Vez
-
-Agora que vimos toda a parte teórica finalmente podemos começar a mexer com a parte prática da coisa. Iremos aprender a como usar o [Spring Initialzr](https://start.spring.io/) para iniciar um projeto!
-
-#### Passo a Passo
-
-- Abra o site do Spring Initialzr clicando [aqui](https://start.spring.io/).
-- Nesse projetinho utilizaremos o **Maven** como nosso gerenciador de dependências.
-- Selecione a linguagem que estamos usando nesse minicurso.
-- Na seção Group, coloque o grupo ou instituição desejada.
-- Na seção arctifact coloque o nome do projeto.
-- Selecione **Jar** na seção Packaging.
-- Selecione a versão 21 do Java.
-- Clique em **Add Dependencies** e adicione as dependências: Spring Data JPA, H2 Database e Spring Web.
-- Clique em **Generate**, baixe, extraia e abra o projeto no vscode.
-- Abra a pasta  que contém {nomeDoSeuProjeto}Application.java em src/main/java/{group}/{arctifact}.
-- Rode `./mvnw spring-boot:run` no terminal do vscode!
-
-## Praticando a Camada Model
-
-Agora que temos o projeto aberto e rodando com sucesso nos nossos computadores, podemos finalmente colocar a mão na massa e começar a programação de verdade!
-
-Para começar a codar a camada model, precisamos primeiro organizar sua estrutura de pastas. Na mesma pasta do arquivo (nomeDoProjeto)Aplication.java crie uma pasta "model".Agora, dentro da pasta model, podemos começar a programar nossas classes que representarão as entidades da nossa pequena aplicação!
-
-Iremos criar uma classe que representará petianos, então essa classe deve conter um identificador único, nome, curso, e uma string que terá a url da imagem de perfil.
-
-Obs.: Lembrando que além de codar a classe em java padrão, precisamos nos atentar a usar as annotations do spring, então no fim teremos algo nesse modelo:
-
-```java
-@Entity
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_user")
-    private Long id;
-
-    @Column(name="nome")
-    private String name;
-
-    @Column(name="email")
-    private String email;
-}
-```
-
-<div style="text-align: center; padding-bottom: 50px; padding-top: 30px;">
-  <b>-------------Live Coding------------</b>
-</div>
-
-<div style="text-align: center; padding-bottom: 50px;">
-  <img alt="codando!!!!!" src="assets/images/codingtime.png" width="60%" style="filter: invert(1);">
-</div>
-
-Obs.: Para compilar, basta usarmos o comando `./mvnw spring-boot:run`
-
-### Visualizando Resultados na Prática
-
-Agora que fizemos uma classe da camada model, seria muito anticlimático que o método de visualizar tudo funcionando fosse apenas conseguir compilar o programa. Para dar um gostinho dos próximos dias, disponibilizaremos a camada controller e a repository desse mini projetinho, junto com um pequeno script sql que servirá para popular a tabela gerada pela classe petiano.
-
-[Clicando aqui](https://drive.google.com/drive/folders/1jYb6jZxgWt59IMtkBH2j6aorvbVd5qbA?usp=sharing) vocês baixarão a camada controller, a camada repository, o script sql e o application.properties.
-
-A organização da pasta principal do projeto (a que possui o arquivo {nomeDoProjeto}Application.java) deve ficar assim:
-
-```
-.
-├── controller
-│   └── PetianoController.java
-├── GabaritoProjetoPrimeiroDiaApplication.java
-├── model
-│   └── Petiano.java
-└── repository
-    └── PetianoRepository.java
-```
-
-O script data.sql e o application.properties devem ficar no diretório `src/main/resources/`.
-
-Obs.: Os imports nas classes da camada controller e repository, assim como algumas configurações no application.properties devem ser modificados de acordo com o group e arctifact do projeto que você criou no spring.initialzr.
-
-Agora, podemos rodar tudo com `./mvnw spring-boot:run`.
-
-O resultado final pode ser visualizado abrindo o navegador de sua escolha e acessando o endereço `http://localhost:8080/petianos/get`.
-
-<div style="text-align: center; padding-bottom: 50px;">
-  <img alt="emoji festejando!!!!" src="assets/images/partyemoji.png" width="30%">
-</div>
-
-### Gabarito do projeto desenvolvido
-
-[Cliquando Aqui](https://drive.google.com/drive/folders/1UM0GL6FTM4mDQQG0BLh__sWEY4hP83h-?usp=sharing) vocês podem baixar a versão final do projetinho que fizemos nesse dia.
-
+## Formato JSON
+A Notação de Objeto de JavaScript (JSON) é um dos mais difundidos e suportados formatos de armazenamento e transmissão de dados estruturados. Tem grande facilidade de leitura e escrita tanto por programas quanto por humanos e é o padrão para o framework que utilizaremos.

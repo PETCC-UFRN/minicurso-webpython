@@ -329,47 +329,6 @@
   </li>
 </ol>
 
-<h2 id="exercício-prático-live-coding-">Exercício Prático (Live Coding) <!--Acredito que esse exemplo ainda vai ser adaptado para a ideia do restaurante, que é o projeto final--></h2>
-
-<p>Daremos continuidade ao exercício feito no final do último dia, adicionando uma regra de negócio para a biblioteca e documentando seu código e sua API.</p>
-
-<h3 id="regra-de-negócio">Regra de negócio</h3>
-
-<ul>
-  <li>Um usuário não pode alugar um livro se tiver multas pendentes.</li>
-  <li>Um usuário não pode alugar um livro indisponível.</li>
-</ul>
-
-<!--Spoiler box clicável para caso o aluno queira saber o que fazer-->
-<details>
-<summary><strong>Dica</strong></summary>
-
-<ul>
-  <li>Criar o <code>LivroService</code></li>
-  <li>Injetar o <code>LivroRepository</code></li>
-  <li>Criar o método <code>AlugarLivro()</code></li>
-  <li>Verificar se o usuário possui multas pendentes</li>
-  <li>Verificar se o livro está disponível</li>
-  <li>Lançar exceção ou retornar erro caso a regra falhe</li>
-</ul>
-
-</details>
-
-<h3 id="funcionalidades-esperadas-ao-fim-do-exercício">Funcionalidades esperadas ao fim do exercício</h3>
-
-<ul>
-  <li>Cadastro de livros</li>
-  <li>Listagem de livros</li>
-  <li>Aluguel de livros
-    <ul>
-      <li>Com regras de negócio para checagem de erros</li>
-    </ul>
-  </li>
-  <li>Integração com banco de dados</li>
-  <li>Documentação dos endpoints com Swagger</li>
-  <li>Documentação do código com JavaDoc</li>
-</ul>
-
 <h3 id="exemplo-de-código-documentado-com-swagger">Exemplo de código documentado com Swagger</h3>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//swagger imports</span>
@@ -429,6 +388,47 @@
     <span class="c1">// getters e setters</span>
 <span class="o">}</span>
 </code></pre></div></div>
+
+<h2 id="exercício-prático-live-coding-">Exercício Prático (Live Coding) <!--Acredito que esse exemplo ainda vai ser adaptado para a ideia do restaurante, que é o projeto final--></h2>
+
+<p>Daremos continuidade ao exercício feito no final do último dia, adicionando uma regra de negócio para a biblioteca e documentando seu código e sua API.</p>
+
+<h3 id="regra-de-negócio">Regra de negócio</h3>
+
+<ul>
+  <li>Um usuário não pode alugar um livro se tiver multas pendentes.</li>
+  <li>Um usuário não pode alugar um livro indisponível.</li>
+</ul>
+
+<!--Spoiler box clicável para caso o aluno queira saber o que fazer-->
+<details>
+<summary><strong>Dica</strong></summary>
+
+<ul>
+  <li>Criar o <code>LivroService</code></li>
+  <li>Injetar o <code>LivroRepository</code></li>
+  <li>Criar o método <code>AlugarLivro()</code></li>
+  <li>Verificar se o usuário possui multas pendentes</li>
+  <li>Verificar se o livro está disponível</li>
+  <li>Lançar exceção ou retornar erro caso a regra falhe</li>
+</ul>
+
+</details>
+
+<h3 id="funcionalidades-esperadas-ao-fim-do-exercício">Funcionalidades esperadas ao fim do exercício</h3>
+
+<ul>
+  <li>Cadastro de livros</li>
+  <li>Listagem de livros</li>
+  <li>Aluguel de livros
+    <ul>
+      <li>Com regras de negócio para checagem de erros</li>
+    </ul>
+  </li>
+  <li>Integração com banco de dados</li>
+  <li>Documentação dos endpoints com Swagger</li>
+  <li>Documentação do código com JavaDoc</li>
+</ul>
 
                 </div>
             </main>

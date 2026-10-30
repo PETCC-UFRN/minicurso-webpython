@@ -1,9 +1,9 @@
 ---
 layout: home 
-title: Minicurso de Introdução ao Desenvolvimento Spring
+title: Minicurso de Introdução ao Desenvolvimento Web com Python
 --- 
 
-# Minicurso de Introdução ao Desenvolvimento Spring
+# Introdução ao Desenvolvimento Web com Python
 
 <div class="row" style="display: flex; justify-content: center; align-items: center; margin: 3rem 0;">
   <div class="figure" style="flex: 1; text-align: center;">
@@ -16,21 +16,21 @@ title: Minicurso de Introdução ao Desenvolvimento Spring
 </div>
 <div class="row" style="display: flex; justify-content: space-between; align-items: center; margin: 3rem 0;">
   <div class="figure" style="flex: 1; text-align: center;">
-    <img src="assets/images/spring_logo.png" alt="spring logo" style="display: block; max-width: 50%; margin: 0 auto; border-radius: 8px;">
+    <img src="assets/images/fastapi_logo_full.png" alt="fastapi logo" style="display: block; max-width: 50%; margin: 0 auto; border-radius: 8px;">
   </div>
   
   <div class="figure" style="flex: 1; text-align: center;">
-    <img src="assets/images/java_logo.png" alt="Java logo" style="display: block; max-width: 50%; margin: 0 auto; border-radius: 8px;">
+    <img src="https://www.python.org/static/community_logos/python-logo-generic.svg" alt="Python logo" style="display: block; max-width: 50%; margin: 0 auto; border-radius: 8px;">
   </div>
 </div>
 
-Sejam bem-vindos ao Minicurso de **Introdução ao Desenvolvimento Spring** oferecido pelo PET-CC!
+Sejam bem-vindos ao Minicurso de **Introdução ao Desenvolvimento Web com Python** oferecido pelo PET-CC!
 
-Este minicurso tem como objetivo introduzir participantes sem experiência prévia ao desenvolvimento web utilizando o Spring Framework – uma plataforma poderosa e consolidada para criação de aplicações empresariais em Java.
+Este minicurso tem como objetivo introduzir participantes sem experiência prévia ao desenvolvimento web utilizando o FastAPI – uma plataforma poderosa e consolidada para utilização de Python no back-end.
 
 Ao longo do programa, percorreremos uma jornada estruturada que inclui:
 
-- Revisão dos fundamentos de Java, base essencial para o trabalho com Spring
+- Revisão dos fundamentos de Python, base essencial para o trabalho com FastAPI
 
 - Compreensão de APIs e do protocolo REST, explorando como sistemas se comunicam na web moderna
 
