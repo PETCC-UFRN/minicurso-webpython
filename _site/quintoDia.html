@@ -4,7 +4,7 @@
         <title>Minicurso de Spring</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="./assets/css/styles.css">
-        <link rel="stylesheet" href="/minicurso-linux-git/assets/css/syntax.css">
+        <link rel="stylesheet" href="/minicurso-python-fastapi/assets/css/syntax.css">
         <link rel="icon" href="https://i.ibb.co/RD7XwYH/pet-logo.png" type="image/png">
     </head>
     <body class="layoutConteudo">
@@ -28,97 +28,105 @@
         <div>
             <main>
                 <div class="conteudo-justificado">
-                    <h1 id="projeto-final">Projeto Final</h1>
+                    <h1 id="hackathon-e-projeto-final">Hackathon e Projeto Final</h1>
 
-<p>Esta é a última etapa do nosso minicurso, onde procuramos testar todos os conhecimentos adquiridos ao longo dos últimos dias no desenvolvimento de um projeto simulando um cenário real.</p>
+<p>Bem-vindos ao último dia do nosso minicurso! Hoje é o dia de colocar em prática tudo o que foi aprendido até aqui. O formato de hoje será um Hackathon, uma maratona de programação focada em construir um projeto completo do zero.</p>
 
-<h2 id="contextualização">Contextualização</h2>
+<div style="text-align: center;"> <img alt="Imagem de Hackathon" src="assets/images/hackathon.png" width="60%" />
+</div>
 
-<p>Seu Armando, o dono de um restaurante percebeu que poderia impulsionar o alcance de sua marca desenvolvendo uma aplicação própria para pedidos de delivery, e para isso contratou um desenvolvedor. Acontece que, graças a um imprevisto, o desenvolvedor só teve tempo de desenvolver o Front-End e o banco de dados do sistema, e Armando saiu desesperado atrás de alguém para terminar a aplicação a tempo, e este é você!. Por sorte, o desenvolvedor anterior teve a empatia de escrever um documento explicando como funciona o que foi implementado por ele e qual será o trabalho necessário para desenvolver o Back.</p>
+<hr />
 
-<h2 id="explicando-as-tarefas">Explicando as tarefas</h2>
+<h2 id="planejamento-inicial">Planejamento Inicial</h2>
+<p>Todo bom software começa com um bom planejamento. Antes de escrever a primeira linha de código, precisamos saber exatamente o que vamos construir.</p>
 
-<p>—INÍCIO DO DOCUMENTO</p>
+<div style="text-align: center;"> <img alt="Emoji pensativo" src="assets/images/planning.png" width="30%" />
+</div>
 
-<p>Caro dev que estiver lendo isso, vou tentar ao máximo resumir o que fiz da aplicação e explicar como você pode continuar meu trabalho.</p>
-
-<p>O Front-End da aplicação é feito com React e já possui toda a conexão necessária com a API, bastando apenas desenvolvê-la . O site consiste nas páginas:</p>
+<h3 id="apresentação-do-escopo">Apresentação do Escopo</h3>
+<p>A primeira etapa é decidir o que sua API vai fazer. Vocês têm total liberdade para escolher um tema que achem divertido ou útil. No entanto, se estiverem sem ideias, temos três opções clássicas e muito eficientes para treinar:</p>
 
 <ul>
-  <li>Início: página inicial com informações de contato da marca;</li>
-  <li>Cardápio: página onde serão mostrados os itens com <strong>título, preço e imagem</strong> disponíveis no cardápio do restaurante, e que podem ser atualizados <strong>por um administrador</strong>;</li>
-  <li>Cadastrar Comida: página onde um novo item pode ser adicionado ao cardápio <strong>por um administrador</strong>;</li>
-  <li>Login: página para logar como <strong>administrador</strong> e adicionar, atualizar e remover itens do cardápio.</li>
+  <li><strong>Inventário de RPG:</strong> Uma API para gerenciar os itens de um personagem (nome do item, quantidade, tipo de dano, raridade).</li>
+  <li><strong>Gerenciador de Tarefas (To-Do List):</strong> Um sistema para anotar coisas a fazer, marcá-las como concluídas, definir prazos e prioridades.</li>
+  <li><strong>Cadastro de Alunos:</strong> Um sistema clássico de gestão escolar, registrando nome, matrícula, curso e notas dos alunos.</li>
 </ul>
 
-<p>Para o banco de dados estou atualmente utilizando o H2. É super simples de rodar e utilizar, e inclusive já preparei um arquivo application.properties para você utilizar, com todas as conexões já configuradas pro banco:</p>
+<h3 id="modelagem-coletiva">Modelagem Coletiva</h3>
+<p>Com o tema escolhido, é hora de desenhar a estrutura do projeto. Peguem um papel ou abram um bloco de notas e definam:</p>
+<ul>
+  <li><strong>As Rotas da API:</strong> Quais caminhos o usuário vai acessar? (Ex: GET /itens para listar tudo, POST /itens para criar, DELETE /itens/{id} para apagar).</li>
+  <li><strong>Os Atributos do Pydantic:</strong> Como será o formato dos dados recebidos e enviados? Se for um item de RPG, o modelo Pydantic precisa ter um campo nome (string), quantidade (inteiro) e magico (booleano). O Pydantic será nosso segurança, garantindo que ninguém cadastre um item com quantidade em texto no lugar de números.</li>
+</ul>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>spring.datasource.url=jdbc:h2:mem:foodDB
-spring.datasource.driverClassName=org.h2.Driver
-spring.datasource.username=fonseca
-spring.datasource.password=
-spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+<hr />
 
-# visualizar os dados em localhost:8080/h2-console
-spring.h2.console.enabled=true
-spring.jpa.hibernate.ddl-auto=create-drop
-spring.sql.init.mode=always
-spring.jpa.defer-datasource-initialization=true
+<h2 id="desenvolvimento-e-mão-na-massa">Desenvolvimento e Mão na Massa</h2>
 
-spring.security.user.name=admin
-spring.security.user.password=12345
-</code></pre></div></div>
+<p>Agora vocês podem colocar a mão na massa!</p>
 
-<p>Como você pode ver no código, os dados podem ser visualizados acessando <code class="language-plaintext highlighter-rouge">localhost:8080/h2-console</code>. Aqui vai também um script SQL para você popular as tabelas com produtos teste:</p>
+<div style="text-align: center;"> <img alt="Meme para marcar o início do desenvolvimento" src="assets/images/letscode.jpg" width="60%" />
+</div>
 
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">IF</span> <span class="k">EXISTS</span> <span class="n">foods</span><span class="p">;</span>
+<p>Durante este período, cada grupo programará no seu próprio ritmo. Para que o projeto seja considerado concluído e validado, ele precisa cumprir os seguintes requisitos obrigatórios:</p>
 
-<span class="c1">-- Definindo os tipos das colunas</span>
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">foods</span> <span class="p">(</span>
-    <span class="n">id</span> <span class="nb">BIGINT</span> <span class="n">AUTO_INCREMENT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
-    <span class="n">title</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">price</span> <span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-    <span class="n">image</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
-<span class="p">);</span>
+<ol>
+  <li><strong>CRUD Completo:</strong> A sua API precisa fazer as quatro operações básicas de banco de dados:
+    <ul>
+      <li>Create (Criar - POST)</li>
+      <li>Read (Ler - GET)</li>
+      <li>Update (Atualizar - PUT ou PATCH)</li>
+      <li>Delete (Apagar - DELETE)</li>
+    </ul>
+  </li>
+  <li><strong>Leitura e Escrita em JSON:</strong> Os dados não podem sumir quando o servidor for reiniciado. Vocês deverão implementar a persistência salvando e lendo as informações de um arquivo .json local.</li>
+  <li><strong>Separação em Módulos:</strong> Um código profissional é um código organizado. Vocês não farão tudo em um arquivo só.
+    <ul>
+      <li>main.py: Ficará responsável apenas pelas rotas (os endpoints) e pela configuração do FastAPI.</li>
+      <li>db.py (ou similar): Ficará responsável apenas pela lógica de abrir o arquivo JSON, salvar os dados e buscar informações.</li>
+    </ul>
+  </li>
+  <li><strong>Tratamento de Erros:</strong> A API não pode “quebrar” ou exibir telas assustadoras de erro interno (Erro 500) para o usuário. Vocês devem usar o HTTPException para retornar:
+    <ul>
+      <li>Erro 404 (Not Found): Quando o usuário tentar buscar, atualizar ou deletar um item que não existe (um ID inválido).</li>
+      <li>Erro 400 (Bad Request): Quando o usuário mandar uma informação inválida que não faça sentido para a regra de negócio.</li>
+    </ul>
+  </li>
+</ol>
 
-<span class="c1">-- Inserindo os dados (o ID será gerado automaticamente)</span>
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">foods</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">'Hambúrguer'</span><span class="p">,</span> <span class="mi">29</span><span class="p">.</span><span class="mi">90</span><span class="p">,</span> <span class="s1">'https://www.allrecipes.com/thmb/_OKqViGmlNaa9GV_c4cpwpwApGk=/0x512/filters:no_upscale():max_bytes(150000):strip_icc()/25473-the-perfect-basic-burger-DDMFS-4x3-56eaba3833fd4a26a82755bcd0be0c54.jpg'</span><span class="p">);</span>
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">foods</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">'Pizza Margherita'</span><span class="p">,</span> <span class="mi">45</span><span class="p">.</span><span class="mi">00</span><span class="p">,</span> <span class="s1">'https://media.istockphoto.com/id/1442417585/pt/foto/person-getting-a-piece-of-cheesy-pepperoni-pizza.webp?s=2048x2048&amp;w=is&amp;k=20&amp;c=iUzcFvd1hTa6yr_gZP_xFcOovMp7R9UfM5ik1EzV57A='</span><span class="p">);</span>
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">foods</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">'Batata Frita'</span><span class="p">,</span> <span class="mi">18</span><span class="p">.</span><span class="mi">50</span><span class="p">,</span> <span class="s1">'https://images.themodernproper.com/production/posts/2022/Homemade-French-Fries_8.jpg?w=800&amp;q=82&amp;auto=format&amp;fit=crop&amp;dm=1662474181&amp;s=70c29a2dbd0cfbac22bb3fdedf6fbd29'</span><span class="p">);</span>
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">foods</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">'Sorvete'</span><span class="p">,</span> <span class="mi">5</span><span class="p">.</span><span class="mi">90</span><span class="p">,</span> <span class="s1">'https://becs-table.com.au/wp-content/uploads/2014/01/ice-cream-1.jpg'</span><span class="p">);</span>
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">foods</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">'Bolo'</span><span class="p">,</span> <span class="mi">30</span><span class="p">.</span><span class="mi">99</span><span class="p">,</span> <span class="s1">'https://cdn.shoppub.io/cdn-cgi/image/w=1000,h=1000,q=80,f=auto/beirario/media/uploads/produtos/foto/xrwupuqt/file.jpg'</span><span class="p">);</span>
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">foods</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">'Bife Oswaldo Aranha'</span><span class="p">,</span> <span class="mi">20</span><span class="p">.</span><span class="mi">87</span><span class="p">,</span> <span class="s1">'https://cdn.panrotas.com.br/portal-panrotas-statics/media-files-original/2013/07/16/bifeaoswaldoaranha.jpg'</span><span class="p">);</span>
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">foods</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">'Macarrão'</span><span class="p">,</span> <span class="mi">12</span><span class="p">.</span><span class="mi">00</span><span class="p">,</span> <span class="s1">'https://s.lightorangebean.com/media/20240914160809/Spicy-Penne-Pasta_-done.png.webp'</span><span class="p">);</span>
+<p>Lembrete: Travou? Pesquise na documentação oficial, olhe os códigos dos dias anteriores, pergunte para o professor, pergunte para a IA!</p>
 
-<span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">IF</span> <span class="k">EXISTS</span> <span class="n">users</span><span class="p">;</span>
+<p>Aviso: A IA  generativa (gemini, claude) pode ser muito útil ao longo do desenvolvimento, mas lembre-se que seu objetivo aqui é aprender! Tente utilizar essas ferramentas para nortear seu desenvolvimento, não para receber a resposta pronta.</p>
 
-<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">users</span> <span class="p">(</span>
-  <span class="n">id</span> <span class="nb">BIGINT</span> <span class="n">AUTO_INCREMENT</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
-  <span class="n">login</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-  <span class="n">senha</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span>
-<span class="p">);</span>
+<hr />
 
-<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">users</span><span class="p">(</span><span class="n">login</span><span class="p">,</span> <span class="n">senha</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="s1">'admin'</span><span class="p">,</span> <span class="s1">'12345'</span><span class="p">)</span>
-</code></pre></div></div>
+<h2 id="code-review-e-testes-integrados">Code Review e Testes Integrados</h2>
+<p>Desenvolver é apenas metade do trabalho de um programador. A outra metade é garantir que o código funciona e interagir com o código de outras pessoas da equipe.</p>
 
-<p>Por fim, seguem todos os endpoints que idealizei para a aplicação:</p>
+<div style="text-align: center;"> <img alt="Meme para marcar o início do desenvolvimento" src="assets/images/codereview.jpg" width="60%" />
+</div>
 
-<p><strong>Para os produtos:</strong> /foods/get, /foods/delete, /foods/update, /foods/save
-<strong>Para o Login:</strong> /auth/login</p>
+<h3 id="compartilhando-e-clonando-o-repositório">Compartilhando e Clonando o Repositório</h3>
+<ul>
+  <li>Subam o código: Façam os commits e enviem o projeto finalizado para o GitHub.</li>
+  <li>Troca de Projetos: Compartilhem o link do repositório com um outro grupo. Cada grupo deverá acessar o repositório de um outro grupo e clonar o projeto para a sua própria máquina usando o comando git clone (ou baixando o repo).</li>
+</ul>
 
-<p>Conto com você para continuar o meu legado. Boa sorte.</p>
+<h3 id="testando-a-api-do-colega">Testando a API do Colega</h3>
+<p>Agora vocês atuarão como Engenheiros de Testes (QA - Quality Assurance).</p>
+<ul>
+  <li>Suba o servidor do colega: Rode a aplicação que você acabou de clonar.</li>
+  <li>Acesse o Swagger: Abra o /docs no navegador. A documentação interativa gerada pelo FastAPI estará lá.</li>
+  <li>Missão - Tentar “Quebrar” a API: Seu objetivo é encontrar falhas.
+    <ul>
+      <li>O que acontece se você enviar um texto onde deveria ser a idade?</li>
+      <li>O que acontece se você tentar apagar um item passando um ID que não existe?</li>
+      <li>A API retorna a mensagem de erro correta ou o servidor trava completamente?</li>
+    </ul>
+  </li>
+</ul>
 
-<p>— FIM DO DOCUMENTO</p>
-
-<h2 id="entrega-do-projeto">Entrega do Projeto</h2>
-
-<p>A Entrega do Projeto deve ser feita via email. O aluno deve enviar um email com o assunto sendo:</p>
-
-<p>“Projeto Final Minicurso Spring - [Nome do Aluno]”</p>
-
-<p>Contendo um arquivo .zip com a pasta do projeto compactada.</p>
-
-<p>O email deve ser enviado para: petcc@dimap.ufrn.br</p>
+<p>Feedback construtivo: Anotem os bugs que encontrarem e repassem para os colegas de forma amigável para que eles possam corrigir!</p>
 
                 </div>
             </main>
