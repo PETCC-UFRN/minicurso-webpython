@@ -91,6 +91,8 @@ O framework em Python com o qual trabalharemos ao longo deste minicurso se chama
 ### O que é uma API?
 Uma interface de programação de aplicação (API) age como um intermediador entre o cliente (Front) e o servidor (Back), facilitando a sua comunicação e a troca de dados.
 
+[imagem de esquema de API]
+
 ### REST
 
 A Transferência Representacional de Estado (REST) nada mais é do que uma arquitetura que impõe condições sobre como uma API deve se comportar. É chamada de RESTful uma API que segue as diretrizes REST:
@@ -109,5 +111,47 @@ Os quatro **métodos principais** que indicam requisições de um cliente a uma 
 - **PUT:** Atualizar um recurso existente no servidor;
 - **DELETE:** Remover um recurso do servidor.
 
+[esquema dos métodos]
+
 ## Formato JSON
 A Notação de Objeto de JavaScript (JSON) é um dos mais difundidos e suportados formatos de armazenamento e transmissão de dados estruturados. Tem grande facilidade de leitura e escrita tanto por programas quanto por humanos e é o padrão para o framework que utilizaremos.
+
+[imagem mostrando o formato]
+
+## Códigos de Status HTTP
+Códigos de status de resposta HTTP indicam o status de conclusão de uma requisição HTTP específica:
+
+- **200 - OK:** Indica que a requisição obteve êxito;
+- **400 - BAD REQUEST:** Indica que o servidor não pôde processar a requisição devido a um erro por parte do cliente; comumente, ocorre devido a sintaxe mal escrita da requisição;
+- **404 - NOT FOUND:** Indica que o servidor não pôde encontrar o recurso requisitado pelo cliente;
+- **500 - INTERNAL SERVER ERROR:** Indica que o servidor se deparou com uma condição inesperada que o impediu de cumprir a requisição; é a resposta genérica para problemas no o servidor.
+
+# Preparação do Ambiente Python
+Com a introdução básica aos conceitos do desenvolvimento web apresentada, é hora de começar os preparativos para se criar o seu primeiro servidor!
+
+## Virtual Environment (venv)
+Para se trabalhar em um projeto de Python, é uma excelente prática organizar um ambiente virtual dedicado ao projeto. Essencialmente, uma ambiente virtual é uma instância do (ou link ao) executável do Python que fica guardadinha em uma pasta dentro do diretório do projeto.
+
+Uma vez que o *venv* está ativo, quaisquer módulos de Python instalados serão associados somente ao *venv* daquele projeto, sem interferir com a instalação base do Python ou com qualquer outro projeto.
+
+Isso é importante para evitar conflitos entre módulos que você poderia estar usando em projetos diferentes e para organizar as dependências necessárias para cada um deles, o que também facilita na reprodução do projeto em outra máquina.
+
+### Linha de comando:
+```
+mkdir novo_projeto
+cd novo_projeto
+python3  -m venv .venv
+source ./.venv/bin/activate
+```
+Isso cria um diretório para seu projeto e, em seguida, um subdiretório que contém o *venv*. Após rodar o último comando, o ambiente virtual é ativado e se torna possível utilizar comandos *python* e *pip*, necessário para instalar os módulos requisitados.
+
+Para desativar o *venv*, apenas digite:
+```
+deactivate
+```
+### VS Code
+
+
+# Hello, Web!
+
+Com a introdução básica aos conceitos do desenvolvimento web apresentada, é hora de criar seu primeiro servidor!
