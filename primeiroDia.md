@@ -288,3 +288,25 @@ Se você integrou os dois exemplos ao seu código, só deve haver duas rotas no 
 Essencialmente, o Swagger é um grande hub para te ajudar no desenvolvimento da aplicação por conter todas as informações importantes sobre suas rotas em um único lugar, com fácil capacidade para testá-las. Novamente, ele gera a documentação automaticamente, então cada nova rota que você definir no código irá aparecer nele!
 
 # Parâmetros de Rota
+Imagine, agora, que vocẽ quer receber os dados de uma postagem em específico. Com o que aprendemos até agora, isso só seria possível ao escrever uma função individual para cada uma das postagens. Então, para facilitar a vida do programador, existem os parâmetros de rota.
+
+Parâmetros de rota te permitem incorporar um valor variável em uma rota, que é passado como parâmetro para a sua função. Com isso, você é capaz de criar uma única rota que responde a uma grande variedade de entradas, reduzindo a necessidade de se criar rotas idênticas, assim como pode retornar recursos ou dados específicos, dependendo do parâmetro de rota recebido.
+
+Para declarar um **parâmetro de rota** no decorador da sua função, escreva-o entre chaves. Para usá-lo na função de fato, passe-o como parâmetro para ela:
+```
+# No decorador, o parâmetro fica entre chaves
+@app.get("/api/posts/{post_id}")
+def get_post(post_id: int): # Na função, ele deve ter o mesmo nome
+    for post in posts:
+        if post["id"] == post_id:
+            return post
+```
+
+O exemplo acima recebe um valor inteiro *post_id* como parâmetro de rota e retorna ao cliente os dados sobre a postagem cujo *id* é igual ao *post_id*. **Note que é necessário definir o tipo do parâmetro como inteiro**, por dois motivos:
+
+- Isso permite que o FastAPI realize automaticamente a validação para essa rota, de modo que um cliente que tente acessá-la com um parâmetro que não se converte em inteiro, como "api/posts/minicurso" recebe um erro de validação em seu lugar, já que {minicurso} não é um inteiro;
+- A própria função precisa saber que o parâmetro é um inteiro pois, senão, vai tratá-lo, por padrão, como string, o que não funcionaria para nosso caso.
+
+
+
+## Testes de Parâmetros no Swagger
