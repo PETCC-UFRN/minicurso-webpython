@@ -1,6 +1,6 @@
 ---
 layout: layoutConteudo
-title: Minicurso de Spring
+title: Minicurso de Backend em Python
 ---
 
 <div id="sumario" class="sumario-git">
